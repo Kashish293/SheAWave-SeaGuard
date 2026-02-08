@@ -1,5 +1,0 @@
-{"level":"info","message":"✅ Firebase Admin initialized","service":"seaguard-backend","timestamp":"2026-02-08 00:04:28"}
-{"level":"info","message":"✅ SeaGuard Backend running on http://localhost:5000","service":"seaguard-backend","timestamp":"2026-02-08 00:04:28"}
-{"level":"info","message":"Environment: development","service":"seaguard-backend","timestamp":"2026-02-08 00:04:28"}
-{"level":"info","message":"ML Service URL: http://localhost:5001","service":"seaguard-backend","timestamp":"2026-02-08 00:04:28"}
-{"level":"info","message":"Ghost Net Threshold: 0.75","service":"seaguard-backend","timestamp":"2026-02-08 00:04:28"}
