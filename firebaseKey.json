@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "seaguard-b43bb",
+  "private_key_id": "a4790c161832087f04f746f0666d2a9bc1037219",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCzcHrvmu+dY9EE\ndPog9zj/6FQW4ZzempRCAoDsVGvrccbcqwX8pXcFJlam5uwOAWKIbd+jouzNiTlJ\nTMa7XlCZ7mbmhmpwiak01crPwpdfehvTAzxqOjAY1hidcU4kcu5ajrEqZ7Vp3fXI\n6ZJNZQdKzvOr9Yps0L7A6XWB1rezLm8E+JdhnU+5IpX9RIBPz969CiD6aKzGLjU7\nMilTboto5yXcDQ+E2acZeFQGTNElp5+yyCsTdT+4ygKejBzgjVa93ReWKz99c7Qq\n9tKDBUQKeBH9wYDUf89DtEogFsq1DxLXtOjYK4lFEx6s4+vyxPfl34I8INWwjx7Q\nLZSu5a7bAgMBAAECggEABsZv9d0RQA2VRkhOa3E6Nztj9Ws2W5dVkrp6eLHlU0H8\nArf4ZWYv/MNKUUn1zr+Ro1oWsByGOWp9fb2G4Ws5ut4sB3c6zJ3+BA8wdbDAu2um\nYkzEerRQvZdT3Zn6G9k1E7lAijvZNzKYxanACukOIe53d94xCFPHaAxIkgrz67F8\nbKXUuRhQWeNGCkSoyU0xLncM6ZjtUGHzWwIqZFIdxnhfepLUntrkGiKVT1kKL2T9\ny6+R2Exye86rnmRZZbZBmUWxCkZuySoemYPJyLZ8VX8SfzEVcBPjHdVJf33rzmMu\nMDNKqv34PlPBA91FBNK+sHi7OkN+fqcTwFc+BZeh2QKBgQDiwiedxY0CLFL3CIDd\ndYz2lCZnWUNXXF4seISYHGyq7oE7k+DZCjc+oi75a2qTBFUwR9SdVg8YYgmHv/0e\nmIFYhkLKBkt0XTbxhw875sz+OJpGwfppcdjq5ttKbIyRd1yzhP7C1s2Cd9b3dlWc\nipS0nLugiofS0c2N2JEhkIkCswKBgQDKlDWMAaclcLXDuul+wDFfeqWc58VI3PuQ\ncj1G4jmT3E2bw9JKRYJKJp++p0MgCA+IIBBPoOsq/DZtNPJvgcJM/tPX79TsoqcI\ngqfG+bcn3xEOgPsdre8IL+gEbnCw6CQClnoN+XBQU+HaYqZtZj9QdC+NK9veSJVZ\nXlfFBUIXOQKBgQDTI9O9jXfZ4SmzSeCr1MvXwWTs8GnKy4AIyoM0G6t3kbMVpYFE\ntsVv9ZXluoY2tF8aIJgxlDNkEc0r8LGgroIpyoIgGLJjfHQvewHNVf/kaxID9pTT\nYCWJvEHOT7qnrEvOAHUzOM2MwUeRjkbzBvqmHhZ6yuLjg2VxwYiJh0p8DwKBgF+/\nrY9/OIF5xG++6J4AOVXnol+HLLhDuqOLW2slghFhD02QQNTaBbsGhnqWlCOPq8er\nYApDBORMUW1MmUobCrtZtsdZlEpElq5vEt35KZiu1mEElaxxiYlVG1T83ka/ckXG\n2enA/FT7UMTn28HZkhN01wTitglaRTz4WoPE+HgBAoGAR2JRgHf5uJ0KCNTufB13\njBowyoomfVw2AIcxgBQeo09j7HzACWZmcBY8JbmY+GJl5UO2FyulQzV4GKkPJfhF\nsaY+DMye5X14ht0gXeNMGh1ra51vE61kTnJU+o8p1KwLXTjKp4ZZ9WddBHuF10n5\nC+3bSa0Fr2enPDJb0Wbvqns=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@seaguard-b43bb.iam.gserviceaccount.com",
+  "client_id": "100245647233269850165",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40seaguard-b43bb.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
