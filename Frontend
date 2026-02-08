@@ -1,0 +1,2164 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SheAWave - SeaGuard Collective | Protecting Oceans &amp; Livelihoods</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&amp;family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-ocean: #0a1128;
+            --ocean-blue: #034078;
+            --bright-cyan: #0cf;
+            --electric-teal: #1cc5dc;
+            --coral-pink: #ff6b9d;
+            --sunset-orange: #ff8c42;
+            --golden-sand: #ffd23f;
+            --seafoam: #34f5c5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--deep-ocean);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Ocean Background */
+        .ocean-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(180deg, 
+                var(--deep-ocean) 0%, 
+                #1a2744 50%, 
+                var(--ocean-blue) 100%);
+            overflow: hidden;
+        }
+
+        /* Bubbles */
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(12, 255, 255, 0.3), rgba(0, 255, 204, 0.08));
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: rise 15s infinite ease-in;
+            box-shadow: 0 0 10px rgba(12, 255, 255, 0.15);
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                opacity: 0.4;
+                transform: translateX(0);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateX(50px);
+            }
+            100% {
+                bottom: 110vh;
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+        }
+
+        /* Animated Fish */
+        .fish {
+            position: absolute;
+            font-size: 45px;
+            animation: swim 25s infinite linear;
+            opacity: 0.4;
+            filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.2));
+        }
+
+        .fish.small {
+            font-size: 28px;
+            animation-duration: 18s;
+            opacity: 0.35;
+        }
+
+        .fish.large {
+            font-size: 60px;
+            animation-duration: 32s;
+            opacity: 0.45;
+        }
+
+        @keyframes swim {
+            0% {
+                left: -120px;
+                transform: scaleX(1) translateY(0);
+            }
+            25% {
+                transform: scaleX(1) translateY(-20px);
+            }
+            49% {
+                transform: scaleX(1) translateY(0);
+            }
+            50% {
+                left: 50%;
+                transform: scaleX(-1) translateY(0);
+            }
+            75% {
+                transform: scaleX(-1) translateY(20px);
+            }
+            100% {
+                left: calc(100% + 120px);
+                transform: scaleX(-1) translateY(0);
+            }
+        }
+
+        /* Seaweed/Coral at bottom */
+        .seaweed {
+            position: absolute;
+            bottom: 0;
+            width: 35px;
+            height: 180px;
+            background: linear-gradient(to top, 
+                rgba(10, 77, 60, 0.4), 
+                rgba(26, 122, 94, 0.25));
+            border-radius: 50% 50% 0 0;
+            animation: sway 5s ease-in-out infinite;
+            opacity: 0.35;
+        }
+
+        .seaweed::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(to top, 
+                rgba(15, 95, 75, 0.35), 
+                transparent);
+            border-radius: 50% 50% 0 0;
+            transform: translateX(-50%);
+        }
+
+        @keyframes sway {
+            0%, 100% { 
+                transform: rotate(-8deg);
+                transform-origin: bottom center;
+            }
+            50% { 
+                transform: rotate(8deg);
+                transform-origin: bottom center;
+            }
+        }
+
+        /* Jellyfish */
+        .jellyfish {
+            position: absolute;
+            font-size: 50px;
+            animation: float-jellyfish 20s infinite ease-in-out;
+            opacity: 0.35;
+            filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.2));
+        }
+
+        @keyframes float-jellyfish {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.35;
+            }
+            25% {
+                transform: translateY(-50px) translateX(30px) rotate(5deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-20px) translateX(-30px) rotate(-5deg);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(-70px) translateX(20px) rotate(3deg);
+                opacity: 0.5;
+            }
+        }
+
+        .waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(to top, 
+                rgba(3, 64, 120, 0.4),
+                transparent);
+            border-radius: 45%;
+            animation: wave-motion 12s infinite linear;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: -4s;
+            opacity: 0.5;
+        }
+
+        .wave:nth-child(3) {
+            animation-delay: -8s;
+            opacity: 0.3;
+        }
+
+        @keyframes wave-motion {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            50% {
+                transform: translateX(25%) translateY(-15px);
+            }
+            100% {
+                transform: translateX(50%) translateY(0);
+            }
+        }
+
+        /* Enhanced Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 17, 40, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid rgba(12, 255, 255, 0.2);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--bright-cyan), var(--seafoam));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            background: rgba(12, 255, 255, 0.1);
+            color: var(--bright-cyan);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(12, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .nav-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--bright-cyan);
+            box-shadow: 0 0 15px rgba(12, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, var(--bright-cyan), var(--seafoam));
+            color: var(--deep-ocean);
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(12, 255, 255, 0.3);
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 100px;
+            left: 40px;
+            z-index: 999;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            border: 2px solid var(--coral-pink);
+            border-radius: 50px;
+            background: rgba(255, 107, 157, 0.15);
+            color: var(--coral-pink);
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-btn.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-btn:hover {
+            background: var(--coral-pink);
+            color: white;
+            transform: translateX(-5px);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Section Views */
+        .section-view {
+            min-height: 100vh;
+            padding: 120px 40px 60px;
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.6s forwards;
+        }
+
+        .section-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .content-section {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 72px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--bright-cyan), var(--seafoam), var(--electric-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+        }
+
+        .hero-subtitle {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+
+        .cta-btn {
+            padding: 20px 50px;
+            font-size: 20px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn.primary {
+            background: linear-gradient(135deg, var(--coral-pink), var(--sunset-orange));
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .cta-btn.primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: var(--bright-cyan);
+            border: 3px solid var(--bright-cyan);
+            box-shadow: 0 0 15px rgba(12, 255, 255, 0.2);
+        }
+
+        .cta-btn.secondary:hover {
+            background: rgba(12, 255, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(12, 255, 255, 0.3);
+        }
+
+        /* Quick Navigation Cards - Enhanced */
+        .quick-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .quick-nav-card {
+            background: linear-gradient(135deg, rgba(12, 255, 255, 0.08), rgba(52, 245, 197, 0.05));
+            border: 2px solid rgba(12, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 35px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+        }
+
+        .quick-nav-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(12, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .quick-nav-card:hover::before {
+            opacity: 1;
+        }
+
+        .quick-nav-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: var(--bright-cyan);
+            box-shadow: 0 15px 40px rgba(12, 255, 255, 0.25);
+            background: linear-gradient(135deg, rgba(12, 255, 255, 0.15), rgba(52, 245, 197, 0.1));
+        }
+
+        .card-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .quick-nav-card:hover .card-icon {
+            animation: bounce 0.6s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .card-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--bright-cyan);
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .quick-nav-card:hover .card-desc {
+            opacity: 1;
+        }
+
+        .card-extra {
+            position: relative;
+            z-index: 1;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, margin-top 0.5s;
+            color: var(--seafoam);
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .quick-nav-card:hover .card-extra {
+            max-height: 150px;
+            margin-top: 15px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--bright-cyan), var(--seafoam));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 140, 66, 0.08));
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            border-radius: 20px;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--coral-pink);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.3);
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(255, 140, 66, 0.15));
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--coral-pink);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        /* Interactive Impact Cards */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin: 60px 0;
+        }
+
+        .impact-card {
+            background: linear-gradient(135deg, rgba(12, 255, 255, 0.08), rgba(52, 245, 197, 0.05));
+            border: 2px solid rgba(12, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+        }
+
+        .impact-card::after {
+            content: '';
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(12, 255, 255, 0.15), transparent);
+            transition: bottom 0.5s;
+        }
+
+        .impact-card:hover::after {
+            bottom: 0;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--seafoam);
+            box-shadow: 0 20px 50px rgba(52, 245, 197, 0.3);
+        }
+
+        .impact-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+            display: block;
+            transition: all 0.4s;
+        }
+
+        .impact-card:hover .impact-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .impact-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--seafoam);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .impact-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .impact-card:hover .impact-desc {
+            opacity: 1;
+        }
+
+        .impact-detail {
+            position: relative;
+            z-index: 1;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, margin-top 0.5s;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .impact-card:hover .impact-detail {
+            max-height: 200px;
+            margin-top: 15px;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin: 60px 0;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.08), rgba(255, 210, 63, 0.05));
+            border: 2px solid rgba(255, 140, 66, 0.3);
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.4s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: var(--sunset-orange);
+            box-shadow: 0 20px 50px rgba(255, 140, 66, 0.3);
+            background: linear-gradient(135deg, rgba(255, 140, 66, 0.15), rgba(255, 210, 63, 0.1));
+        }
+
+        .benefit-icon {
+            font-size: 64px;
+            display: block;
+            margin-bottom: 20px;
+            transition: transform 0.4s;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .benefit-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--sunset-orange);
+            margin-bottom: 15px;
+        }
+
+        .benefit-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(52, 245, 197, 0.1), rgba(28, 197, 220, 0.08));
+            border: 2px solid rgba(52, 245, 197, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(52, 245, 197, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--seafoam);
+            box-shadow: 0 15px 40px rgba(52, 245, 197, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--seafoam);
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* SDG Cards */
+        .sdg-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin: 60px auto;
+            max-width: 1000px;
+        }
+
+        .sdg-card {
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .sdg-icon-box {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sdg-icon-box::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .sdg-card:hover .sdg-icon-box::before {
+            transform: translateY(0);
+        }
+
+        .sdg-card:hover .sdg-icon-box {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .sdg-title {
+            font-size: 24px;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+
+        .sdg-card:hover .sdg-title {
+            transform: scale(1.1);
+        }
+
+        .sdg-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+        }
+
+        /* Decorative Elements */
+        .decorative-wave {
+            width: 100%;
+            height: 120px;
+            margin: 80px 0;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(12, 255, 255, 0.2) 25%, 
+                rgba(52, 245, 197, 0.2) 50%, 
+                rgba(12, 255, 255, 0.2) 75%, 
+                transparent 100%);
+            border-radius: 50%;
+            filter: blur(30px);
+            animation: wave-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes wave-glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* QR Code Visual */
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .tag-label {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--bright-cyan);
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Map Visual */
+        .map-visual {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #1a2744 0%, #034078 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .zone-marker {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            animation: zone-pulse 3s infinite;
+        }
+
+        .zone-restricted {
+            width: 130px;
+            height: 130px;
+            background: rgba(255, 99, 71, 0.35);
+            border: 5px solid #ff6347;
+            top: 15%;
+            left: 12%;
+        }
+
+        .zone-safe {
+            width: 110px;
+            height: 110px;
+            background: rgba(76, 175, 80, 0.35);
+            border: 5px solid #4caf50;
+            top: 55%;
+            right: 15%;
+        }
+
+        .zone-breeding {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 193, 7, 0.35);
+            border: 5px solid #ffc107;
+            bottom: 12%;
+            left: 38%;
+        }
+
+        @keyframes zone-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.12); opacity: 1; }
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            background: rgba(10, 17, 40, 0.95);
+            padding: 20px 25px;
+            border-radius: 15px;
+            border: 2px solid rgba(12, 255, 255, 0.3);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 10px 0;
+            font-size: 15px;
+        }
+
+        .legend-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff6347; }
+        .dot-green { background: #4caf50; }
+        .dot-yellow { background: #ffc107; }
+
+        /* Feature Display Grid */
+        .feature-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin: 60px 0;
+        }
+
+        .feature-visual {
+            padding: 40px;
+        }
+
+        .feature-content h3 {
+            font-size: 32px;
+            color: var(--seafoam);
+            margin-bottom: 25px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 15px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--seafoam);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* Steps Grid */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, rgba(12, 255, 255, 0.1), rgba(52, 245, 197, 0.08));
+            border: 2px solid rgba(12, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--bright-cyan);
+            box-shadow: 0 15px 40px rgba(12, 255, 255, 0.3);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--coral-pink), var(--sunset-orange));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 900;
+            margin: 0 auto 20px;
+        }
+
+        .step-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--bright-cyan);
+            margin-bottom: 12px;
+        }
+
+        .step-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.6;
+        }
+
+        /* Solution Tabs */
+        .solution-tabs {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .solution-tab {
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border: 3px solid rgba(12, 255, 255, 0.3);
+            border-radius: 50px;
+            background: rgba(12, 255, 255, 0.05);
+            color: var(--bright-cyan);
+            cursor: pointer;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-tab::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(12, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .solution-tab:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .solution-tab:hover {
+            border-color: var(--bright-cyan);
+            box-shadow: 0 0 30px rgba(12, 255, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .solution-tab.active {
+            background: linear-gradient(135deg, var(--bright-cyan), var(--seafoam));
+            color: var(--deep-ocean);
+            border-color: transparent;
+            box-shadow: 0 8px 30px rgba(12, 255, 255, 0.6);
+        }
+
+        .solution-content {
+            display: none;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .solution-content.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 20px;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-btn {
+                flex: 1;
+                min-width: 100px;
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .hero-subtitle {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .back-btn {
+                left: 20px;
+                top: 90px;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+
+            .quick-nav-grid,
+            .impact-grid,
+            .benefits-grid,
+            .features-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-display {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .map-visual {
+                height: 350px;
+            }
+
+            .zone-marker {
+                font-size: 32px;
+            }
+
+            .zone-restricted,
+            .zone-safe,
+            .zone-breeding {
+                width: 90px;
+                height: 90px;
+            }
+        }
+
+        /* Animated Icon */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .spinning-icon {
+            display: inline-block;
+            animation: spin-slow 20s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-bg">
+        <div class="waves">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+    <div class="bubble" style="left: 95.8648%; width: 28.8341px; height: 28.8341px; animation-delay: 9.14381s; animation-duration: 21.0983s;"></div><div class="bubble" style="left: 16.6639%; width: 19.6923px; height: 19.6923px; animation-delay: 8.86794s; animation-duration: 12.4885s;"></div><div class="bubble" style="left: 85.8782%; width: 22.3966px; height: 22.3966px; animation-delay: 5.34598s; animation-duration: 21.7121s;"></div><div class="bubble" style="left: 60.2758%; width: 23.7923px; height: 23.7923px; animation-delay: 4.1744s; animation-duration: 10.7064s;"></div><div class="bubble" style="left: 2.96182%; width: 26.6934px; height: 26.6934px; animation-delay: 13.3035s; animation-duration: 16.0372s;"></div><div class="bubble" style="left: 23.4664%; width: 14.8672px; height: 14.8672px; animation-delay: 13.5535s; animation-duration: 10.6545s;"></div><div class="bubble" style="left: 74.7865%; width: 21.3392px; height: 21.3392px; animation-delay: 8.23473s; animation-duration: 15.3814s;"></div><div class="bubble" style="left: 23.9237%; width: 32.6784px; height: 32.6784px; animation-delay: 7.59108s; animation-duration: 14.4003s;"></div><div class="bubble" style="left: 95.3574%; width: 17.7422px; height: 17.7422px; animation-delay: 7.89073s; animation-duration: 11.7734s;"></div><div class="bubble" style="left: 33.0585%; width: 20.2435px; height: 20.2435px; animation-delay: 11.3594s; animation-duration: 19.0783s;"></div><div class="bubble" style="left: 89.0756%; width: 33.5974px; height: 33.5974px; animation-delay: 1.98642s; animation-duration: 18.945s;"></div><div class="bubble" style="left: 45.0369%; width: 15.2996px; height: 15.2996px; animation-delay: 10.7336s; animation-duration: 19.7733s;"></div><div class="bubble" style="left: 28.4747%; width: 26.2856px; height: 26.2856px; animation-delay: 9.09604s; animation-duration: 18.6786s;"></div><div class="bubble" style="left: 52.9196%; width: 31.4747px; height: 31.4747px; animation-delay: 9.32917s; animation-duration: 14.9325s;"></div><div class="bubble" style="left: 75.9214%; width: 33.7231px; height: 33.7231px; animation-delay: 8.98341s; animation-duration: 10.1243s;"></div><div class="fish" style="top: 28.3842%; animation-delay: 0.645692s; animation-duration: 21.573s;">🐟</div><div class="fish" style="top: 18.074%; animation-delay: 0.960004s; animation-duration: 20.6762s;">🐠</div><div class="fish" style="top: 88.2275%; animation-delay: 11.4832s; animation-duration: 36.6942s;">🐠</div><div class="fish small" style="top: 7.89662%; animation-delay: 3.08848s; animation-duration: 35.1171s;">🐡</div><div class="fish small" style="top: 50.772%; animation-delay: 5.07693s; animation-duration: 32.4891s;">🐡</div><div class="fish large" style="top: 27.7423%; animation-delay: 2.40802s; animation-duration: 25.2807s;">🐡</div><div class="fish small" style="top: 5.42857%; animation-delay: 23.4525s; animation-duration: 26.4711s;">🐟</div><div class="fish large" style="top: 21.6407%; animation-delay: 21.2268s; animation-duration: 34.617s;">🐠</div><div class="jellyfish" style="left: 56.2476%; top: 60.7637%; animation-delay: 1.42918s; animation-duration: 17.6683s;">🪼</div><div class="jellyfish" style="left: 55.8599%; top: 51.9591%; animation-delay: 2.72632s; animation-duration: 16.5463s;">🪼</div><div class="jellyfish" style="left: 17.237%; top: 33.8193%; animation-delay: 4.38026s; animation-duration: 17.9538s;">🪼</div><div class="seaweed" style="left: 79.0131%; height: 123.175px; width: 30.8532px; animation-delay: 1.58292s; animation-duration: 6.21818s;"></div><div class="seaweed" style="left: 55.8301%; height: 228.833px; width: 43.469px; animation-delay: 1.85465s; animation-duration: 4.70185s;"></div><div class="seaweed" style="left: 42.5944%; height: 191.993px; width: 39.0784px; animation-delay: 3.93411s; animation-duration: 7.35291s;"></div><div class="seaweed" style="left: 11.5158%; height: 235.885px; width: 37.6589px; animation-delay: 4.86646s; animation-duration: 7.86079s;"></div><div class="seaweed" style="left: 80.6065%; height: 165.168px; width: 25.3601px; animation-delay: 2.96872s; animation-duration: 6.85247s;"></div><div class="seaweed" style="left: 49.0481%; height: 161.682px; width: 41.4812px; animation-delay: 4.46888s; animation-duration: 7.84994s;"></div><div class="seaweed" style="left: 34.7547%; height: 223.693px; width: 35.7882px; animation-delay: 1.84525s; animation-duration: 6.64909s;"></div><div class="seaweed" style="left: 62.3626%; height: 149.066px; width: 33.219px; animation-delay: 4.73825s; animation-duration: 4.2779s;"></div></div>
+
+    <!-- Enhanced Navigation -->
+    <nav class="nav-container">
+        <div class="nav-wrapper">
+            <div class="logo" onclick="showSection('home')">
+                <span class="spinning-icon">🌊</span> SheAWave
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn active" onclick="showSection('home')">Home</button>
+                <button class="nav-btn" onclick="showSection('problem')">Our Problem</button>
+                <button class="nav-btn" onclick="showSection('solution')">Our Solution</button>
+                <button class="nav-btn" onclick="showSection('impact')">Our Impact</button>
+                <button class="nav-btn" onclick="showSection('sdg')">SDG Goals</button>
+                <button class="nav-btn" onclick="showSection('join')">Join Us</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <button class="back-btn" id="backBtn" onclick="showSection('home')">
+        ← Back to Home
+    </button>
+
+    <div class="main-content">
+        <!-- HOME SECTION -->
+        <div class="section-view active" id="home">
+            <div class="content-section">
+                <div class="hero">
+                    <h1 class="hero-title">SheAWave</h1>
+                    <p class="hero-subtitle">
+                        Empowering Fishermen to Protect Oceans &amp; Secure Their Future
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="cta-btn primary" onclick="showSection('join')">
+                            Join the Movement
+                        </button>
+                        <button class="cta-btn secondary" onclick="showSection('solution')">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quick-nav-grid">
+                    <div class="quick-nav-card" onclick="showSection('problem')">
+                        <span class="card-icon">🌊</span>
+                        <h3 class="card-title">Our Problem</h3>
+                        <p class="card-desc">
+                            640,000 tons of fishing gear lost annually. Ghost nets kill 1M+ seabirds &amp; 100,000+ marine mammals yearly.
+                        </p>
+                        <div class="card-extra">
+                            Abandoned gear creates dead zones, destroys habitats, and threatens entire marine ecosystems.
+                        </div>
+                    </div>
+
+                    <div class="quick-nav-card" onclick="showSection('solution')">
+                        <span class="card-icon">💡</span>
+                        <h3 class="card-title">Our Solution</h3>
+                        <p class="card-desc">
+                            AI-powered platform connecting fishermen, NGOs, and communities to track gear and clean oceans.
+                        </p>
+                        <div class="card-extra">
+                            GPS tracking, QR-coded nets, real-time mapping, and community coordination all in one app.
+                        </div>
+                    </div>
+
+                    <div class="quick-nav-card" onclick="showSection('impact')">
+                        <span class="card-icon">🌍</span>
+                        <h3 class="card-title">Our Impact</h3>
+                        <p class="card-desc">
+                            Real-time tracking, safer fishing zones, income protection, and measurable ocean health improvements.
+                        </p>
+                        <div class="card-extra">
+                            70% reduction in gear loss, 500K+ marine animals saved, $5M income protected annually.
+                        </div>
+                    </div>
+
+                    <div class="quick-nav-card" onclick="showSection('sdg')">
+                        <span class="card-icon">🎯</span>
+                        <h3 class="card-title">UN SDG Goals</h3>
+                        <p class="card-desc">
+                            Aligned with SDG 14, 12, and 8 for sustainable oceans, responsible consumption, and decent work.
+                        </p>
+                        <div class="card-extra">
+                            Direct contribution to Life Below Water, Responsible Production, and Economic Growth goals.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decorative-wave"></div>
+
+                <div style="text-align: center; padding: 60px 20px;">
+                    <h2 style="font-size: 42px; color: var(--bright-cyan); margin-bottom: 30px;">
+                        Instead of blaming fishermen, we empower them
+                    </h2>
+                    <p style="font-size: 22px; color: rgba(255,255,255,0.85); max-width: 900px; margin: 0 auto; line-height: 1.8;">
+                        Our platform turns fishermen into ocean guardians by giving them the tools to protect marine life while securing their livelihoods for generations to come.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROBLEM SECTION -->
+        <div class="section-view" id="problem">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">🌊 The Problem</h2>
+                    <p class="section-subtitle">
+                        Ghost fishing gear is destroying our oceans and threatening the livelihoods of millions
+                    </p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">640K</div>
+                        <div class="stat-label">Tons of Gear Lost Annually</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1M+</div>
+                        <div class="stat-label">Seabirds Killed Yearly</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100K+</div>
+                        <div class="stat-label">Marine Mammals Lost</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10%</div>
+                        <div class="stat-label">Of All Marine Litter</div>
+                    </div>
+                </div>
+
+                <div style="margin: 80px 0;">
+                    <h3 style="text-align: center; font-size: 36px; color: var(--seafoam); margin-bottom: 50px;">
+                        Why This Happens
+                    </h3>
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <span class="impact-icon">⚠️</span>
+                            <h4 class="impact-title">Harsh Conditions</h4>
+                            <p class="impact-desc">Storms, strong currents, and rough seas cause gear loss</p>
+                            <div class="impact-detail">
+                                Unpredictable weather patterns and ocean conditions make it nearly impossible for fishermen to retrieve all their equipment.
+                            </div>
+                        </div>
+
+                        <div class="impact-card">
+                            <span class="impact-icon">📍</span>
+                            <h4 class="impact-title">No Tracking System</h4>
+                            <p class="impact-desc">Lost nets can't be found or recovered</p>
+                            <div class="impact-detail">
+                                Without GPS tracking, once gear is lost, it becomes virtually impossible to locate and retrieve from the ocean floor.
+                            </div>
+                        </div>
+
+                        <div class="impact-card">
+                            <span class="impact-icon">💸</span>
+                            <h4 class="impact-title">Economic Loss</h4>
+                            <p class="impact-desc">Fishermen lose income from damaged gear</p>
+                            <div class="impact-detail">
+                                Each lost net represents months of income, pushing families into poverty and forcing unsustainable practices.
+                            </div>
+                        </div>
+
+                        <div class="impact-card">
+                            <span class="impact-icon">🐟</span>
+                            <h4 class="impact-title">Continuous Killing</h4>
+                            <p class="impact-desc">Ghost nets keep catching marine life for decades</p>
+                            <div class="impact-detail">
+                                Abandoned gear continues to trap and kill fish, turtles, dolphins, and other marine animals for up to 600 years.
+                            </div>
+                        </div>
+
+                        <div class="impact-card">
+                            <span class="impact-icon">🌐</span>
+                            <h4 class="impact-title">No Coordination</h4>
+                            <p class="impact-desc">Communities work in isolation without data sharing</p>
+                            <div class="impact-detail">
+                                Lack of communication between fishing communities, NGOs, and governments prevents effective cleanup efforts.
+                            </div>
+                        </div>
+
+                        <div class="impact-card">
+                            <span class="impact-icon">⚖️</span>
+                            <h4 class="impact-title">Blame vs. Support</h4>
+                            <p class="impact-desc">Fishermen blamed instead of being given tools</p>
+                            <div class="impact-detail">
+                                Current approaches punish rather than empower, creating distrust and preventing collaborative solutions.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOLUTION SECTION -->
+        <div class="section-view" id="solution">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">💡 Our Solution</h2>
+                    <p class="section-subtitle">
+                        Two powerful tools working together to protect oceans and empower fishermen
+                    </p>
+                </div>
+
+                <!-- Solution Tabs -->
+                <div class="solution-tabs">
+                    <button class="solution-tab active" onclick="showSolutionTab('ghost-net-tab')">
+                        🏷️ Ghost Net Tracking
+                    </button>
+                    <button class="solution-tab" onclick="showSolutionTab('fishsafe-tab')">
+                        🗺️ FishSafe Zones
+                    </button>
+                    <button class="solution-tab" onclick="showSolutionTab('platform-tab')">
+                        📱 Platform Features
+                    </button>
+                </div>
+
+                <!-- GHOST NET TRACKING TAB -->
+                <div class="solution-content active" id="ghost-net-tab">
+                    <h3 style="font-size: 42px; color: var(--bright-cyan); margin-bottom: 30px; text-align: center;">
+                        🏷️ Ghost Net Tracking System
+                    </h3>
+                    <p style="text-align: center; font-size: 20px; color: rgba(255,255,255,0.85); margin-bottom: 60px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                        Every fishing net gets a unique QR code tag. Track ownership, report lost gear, and enable fast cleanup to save marine life.
+                    </p>
+
+                    <div class="feature-display">
+                        <div class="feature-visual">
+                            <div class="qr-code">📱</div>
+                            <div class="tag-label">Net ID: SG-2026-1547</div>
+                            <p style="margin-top: 25px; color: rgba(255,255,255,0.7); text-align: center; font-size: 16px;">
+                                Scan QR code to track net ownership &amp; history
+                            </p>
+                        </div>
+
+                        <div class="feature-content">
+                            <h3>How It Works</h3>
+                            <ul class="feature-list">
+                                <li>Each net gets a unique QR code tag during registration</li>
+                                <li>Fishermen scan to register nets to their profile</li>
+                                <li>Lost nets can be reported with GPS location</li>
+                                <li>Found nets can be scanned to identify owner</li>
+                                <li>Cleanup teams receive instant notifications</li>
+                                <li>Track net lifecycle from deployment to removal</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 36px; color: var(--bright-cyan); margin: 80px 0 40px; text-align: center;">
+                        The Reporting Process
+                    </h3>
+
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-icon">📍</div>
+                            <h4 class="step-title">Report Location</h4>
+                            <p class="step-description">Use GPS or manual entry to mark where the net was lost or found on the map</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-icon">📷</div>
+                            <h4 class="step-title">Add Details</h4>
+                            <p class="step-description">Upload photo, estimate size, describe condition, and scan QR code if available</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-icon">📤</div>
+                            <h4 class="step-title">Submit Report</h4>
+                            <p class="step-description">Instant notification sent to cleanup teams, NGOs, and local authorities</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <div class="step-icon">✅</div>
+                            <h4 class="step-title">Track Removal</h4>
+                            <p class="step-description">Get updates when the net is recovered, removed, and properly disposed</p>
+                        </div>
+                    </div>
+
+                    <div class="benefits-grid" style="margin-top: 60px;">
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🎯</span>
+                            <h3 class="benefit-title">Accountability Without Blame</h3>
+                            <p class="benefit-text">
+                                Track net ownership for responsibility while focusing on solutions, not punishment. Build trust in fishing communities.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🚀</span>
+                            <h3 class="benefit-title">Fast Cleanup Response</h3>
+                            <p class="benefit-text">
+                                GPS coordinates and photos help cleanup teams prepare proper equipment and plan efficient removal operations.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🌊</span>
+                            <h3 class="benefit-title">Save Marine Life</h3>
+                            <p class="benefit-text">
+                                Quick reporting and removal prevents years of continuous animal deaths. One report can save hundreds of marine creatures.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FISHSAFE ZONES TAB -->
+                <div class="solution-content" id="fishsafe-tab">
+                    <h3 style="font-size: 42px; color: var(--seafoam); margin-bottom: 30px; text-align: center;">
+                        🗺️ FishSafe Zones Mapping
+                    </h3>
+                    <p style="text-align: center; font-size: 20px; color: rgba(255,255,255,0.85); margin-bottom: 60px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                        Real-time maps showing safe fishing areas, seasonal restrictions, and breeding zones. Fish responsibly without sacrificing income.
+                    </p>
+
+                    <div class="feature-display">
+                        <div class="feature-content">
+                            <h3>Zone Features</h3>
+                            <ul class="feature-list">
+                                <li>Real-time restricted zone updates</li>
+                                <li>Breeding season calendars by species</li>
+                                <li>GPS navigation to nearest safe zones</li>
+                                <li>Weather and water condition alerts</li>
+                                <li>Best fishing time recommendations</li>
+                                <li>Community-reported productive spots</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-visual">
+                            <div class="map-visual">
+                                <div class="zone-marker zone-restricted">🚫</div>
+                                <div class="zone-marker zone-safe">✓</div>
+                                <div class="zone-marker zone-breeding">🐟</div>
+                                
+                                <div class="map-legend">
+                                    <div class="legend-item">
+                                        <div class="legend-dot dot-red"></div>
+                                        <span>Restricted Zone</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-dot dot-green"></div>
+                                        <span>Safe to Fish</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-dot dot-yellow"></div>
+                                        <span>Breeding Season</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 36px; color: var(--seafoam); margin: 80px 0 40px; text-align: center;">
+                        Zone Types &amp; Benefits
+                    </h3>
+
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <span class="benefit-icon">⚠️</span>
+                            <h3 class="benefit-title">Temporary Restrictions</h3>
+                            <p class="benefit-text">
+                                Seasonal closures during breeding periods to protect fish populations. Automatically lifted when it's safe to resume fishing.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🌊</span>
+                            <h3 class="benefit-title">Coral Protection Zones</h3>
+                            <p class="benefit-text">
+                                Sensitive reef areas marked to prevent damage. Alternative routes and productive zones suggested for sustainable fishing.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">📱</span>
+                            <h3 class="benefit-title">Smart Notifications</h3>
+                            <p class="benefit-text">
+                                Instant alerts when entering restricted zones or when new safe zones open nearby. Stay informed in real-time.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🎯</span>
+                            <h3 class="benefit-title">Best Fishing Spots</h3>
+                            <p class="benefit-text">
+                                Community-shared information about productive locations with good conditions, abundant catch, and optimal timing.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">💰</span>
+                            <h3 class="benefit-title">Income Protection</h3>
+                            <p class="benefit-text">
+                                Navigate to alternative productive areas during closures. Maintain steady income while protecting the ecosystem.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🌱</span>
+                            <h3 class="benefit-title">Long-term Sustainability</h3>
+                            <p class="benefit-text">
+                                Respecting breeding seasons ensures healthy fish populations for future generations and stable livelihoods.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLATFORM FEATURES TAB -->
+                <div class="solution-content" id="platform-tab">
+                    <h3 style="font-size: 42px; color: var(--electric-teal); margin-bottom: 30px; text-align: center;">
+                        📱 Additional Platform Features
+                    </h3>
+                    <p style="text-align: center; font-size: 20px; color: rgba(255,255,255,0.85); margin-bottom: 60px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                        Powerful tools designed specifically for fishing communities
+                    </p>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">📱</span>
+                            <h4 class="feature-title">Simple Mobile App</h4>
+                            <p class="feature-desc">
+                                Easy-to-use interface designed for fishermen: offline mode, voice commands, and multilingual support.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">🤖</span>
+                            <h4 class="feature-title">AI Predictions</h4>
+                            <p class="feature-desc">
+                                Machine learning predicts high-risk zones and suggests safer fishing areas based on ocean data.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">💰</span>
+                            <h4 class="feature-title">Reward System</h4>
+                            <p class="feature-desc">
+                                Earn credits for sustainable practices and reporting lost gear, redeemable for equipment.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">📊</span>
+                            <h4 class="feature-title">Impact Dashboard</h4>
+                            <p class="feature-desc">
+                                Real-time metrics show ocean health improvements, gear recovered, and community impact.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">🔔</span>
+                            <h4 class="feature-title">Alert System</h4>
+                            <p class="feature-desc">
+                                Instant notifications about weather warnings, safe zones, and nearby lost gear for recovery.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">🤝</span>
+                            <h4 class="feature-title">Community Network</h4>
+                            <p class="feature-desc">
+                                Connect with other fishermen, share knowledge, and coordinate efforts for collective impact.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">🌐</span>
+                            <h4 class="feature-title">Offline Mode</h4>
+                            <p class="feature-desc">
+                                Works without internet connection. Sync data automatically when back in coverage.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">🎙️</span>
+                            <h4 class="feature-title">Voice Commands</h4>
+                            <p class="feature-desc">
+                                Hands-free operation for busy fishermen. Report gear and check zones using voice.
+                            </p>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">🏆</span>
+                            <h4 class="feature-title">Achievements</h4>
+                            <p class="feature-desc">
+                                Gamified experience with badges and recognition for sustainable fishing practices.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMPACT SECTION -->
+        <div class="section-view" id="impact">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">🌍 Our Impact</h2>
+                    <p class="section-subtitle">
+                        Measurable results that protect oceans while empowering fishing communities
+                    </p>
+                </div>
+
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <span class="impact-icon">🎯</span>
+                        <h4 class="impact-title">Real-Time Tracking</h4>
+                        <p class="impact-desc">Monitor all fishing gear with GPS precision</p>
+                        <div class="impact-detail">
+                            Reduce gear loss by 70% through active monitoring. Every net, trap, and line is accounted for, ensuring fishermen can quickly recover equipment before it becomes ghost gear.
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <span class="impact-icon">🐋</span>
+                        <h4 class="impact-title">Marine Life Protection</h4>
+                        <p class="impact-desc">Prevent wildlife deaths from abandoned gear</p>
+                        <div class="impact-detail">
+                            Save hundreds of thousands of marine animals annually by removing ghost nets before they trap endangered species. Every recovered net means lives saved.
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <span class="impact-icon">📍</span>
+                        <h4 class="impact-title">Safe Zone Mapping</h4>
+                        <p class="impact-desc">AI identifies low-risk fishing areas</p>
+                        <div class="impact-detail">
+                            Advanced algorithms analyze ocean currents, weather patterns, and historical data to guide fishermen toward safer, more productive zones with minimal gear loss risk.
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <span class="impact-icon">💵</span>
+                        <h4 class="impact-title">Income Security</h4>
+                        <p class="impact-desc">Protect fishermen's economic stability</p>
+                        <div class="impact-detail">
+                            Save families up to $5,000 annually in replacement costs. Sustainable practices ensure long-term fish stock health, securing income for future generations.
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <span class="impact-icon">🧹</span>
+                        <h4 class="impact-title">Ocean Cleanup</h4>
+                        <p class="impact-desc">Coordinate large-scale recovery operations</p>
+                        <div class="impact-detail">
+                            Connect NGOs, volunteers, and fishermen for efficient cleanup campaigns. Track every kilogram removed and see the direct impact on local marine ecosystems.
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <span class="impact-icon">📈</span>
+                        <h4 class="impact-title">Data-Driven Policy</h4>
+                        <p class="impact-desc">Inform government regulations with real insights</p>
+                        <div class="impact-detail">
+                            Provide policymakers with accurate, real-time data on fishing patterns, gear loss hotspots, and conservation effectiveness to create evidence-based marine protection laws.
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <span class="impact-icon">🏆</span>
+                        <h4 class="impact-title">Sustainable Certification</h4>
+                        <p class="impact-desc">Reward responsible fishing practices</p>
+                        <div class="impact-detail">
+                            Fishermen using our platform gain access to premium markets demanding sustainable seafood. Certification opens doors to higher prices and better market access.
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <span class="impact-icon">🌐</span>
+                        <h4 class="impact-title">Global Network</h4>
+                        <p class="impact-desc">Connect coastal communities worldwide</p>
+                        <div class="impact-detail">
+                            Share best practices, success stories, and innovations across continents. What works in Indonesia can help communities in Peru, creating a global movement for ocean health.
+                        </div>
+                    </div>
+
+                    <div class="impact-card">
+                        <span class="impact-icon">🎓</span>
+                        <h4 class="impact-title">Education &amp; Training</h4>
+                        <p class="impact-desc">Build capacity in fishing communities</p>
+                        <div class="impact-detail">
+                            Free training programs teach sustainable techniques, gear maintenance, and ocean conservation. Empower the next generation of ocean guardians with knowledge and tools.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decorative-wave"></div>
+
+                <div style="text-align: center; margin-top: 80px;">
+                    <h3 style="font-size: 36px; color: var(--seafoam); margin-bottom: 40px;">
+                        By The Numbers
+                    </h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">70%</div>
+                            <div class="stat-label">Reduction in Gear Loss</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">500K+</div>
+                            <div class="stat-label">Marine Animals Saved</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">$5M</div>
+                            <div class="stat-label">Income Protected Annually</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">10K+</div>
+                            <div class="stat-label">Fishermen Empowered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SDG SECTION -->
+        <div class="section-view" id="sdg">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">🎯 Aligned with UN SDG Goals</h2>
+                    <p class="section-subtitle">
+                        Our mission directly supports global sustainability targets
+                    </p>
+                </div>
+
+                <div class="sdg-grid">
+                    <div class="sdg-card">
+                        <div class="sdg-icon-box" style="background: linear-gradient(135deg, var(--electric-teal), var(--ocean-blue));">
+                            🌊
+                        </div>
+                        <h4 class="sdg-title" style="color: var(--electric-teal);">SDG 14</h4>
+                        <p class="sdg-desc">Life Below Water</p>
+                    </div>
+
+                    <div class="sdg-card">
+                        <div class="sdg-icon-box" style="background: linear-gradient(135deg, var(--seafoam), var(--bright-cyan));">
+                            ♻️
+                        </div>
+                        <h4 class="sdg-title" style="color: var(--seafoam);">SDG 12</h4>
+                        <p class="sdg-desc">Responsible Consumption</p>
+                    </div>
+
+                    <div class="sdg-card">
+                        <div class="sdg-icon-box" style="background: linear-gradient(135deg, var(--coral-pink), var(--sunset-orange));">
+                            💼
+                        </div>
+                        <h4 class="sdg-title" style="color: var(--coral-pink);">SDG 8</h4>
+                        <p class="sdg-desc">Decent Work &amp; Growth</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 100px;">
+                    <h3 style="text-align: center; font-size: 36px; color: var(--bright-cyan); margin-bottom: 50px;">
+                        How We Contribute
+                    </h3>
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <span class="impact-icon">🌊</span>
+                            <h4 class="impact-title">SDG 14: Life Below Water</h4>
+                            <p class="impact-desc">Conserve and sustainably use oceans, seas and marine resources</p>
+                            <div class="impact-detail">
+                                We directly reduce marine pollution by preventing and recovering ghost fishing gear, protect marine ecosystems, and promote sustainable fishing practices that preserve ocean biodiversity for future generations.
+                            </div>
+                        </div>
+
+                        <div class="impact-card">
+                            <span class="impact-icon">♻️</span>
+                            <h4 class="impact-title">SDG 12: Responsible Consumption</h4>
+                            <p class="impact-desc">Ensure sustainable consumption and production patterns</p>
+                            <div class="impact-detail">
+                                Our platform promotes responsible management of natural resources, reduces waste through gear tracking and recovery, and encourages sustainable practices in the fishing industry through education and incentives.
+                            </div>
+                        </div>
+
+                        <div class="impact-card">
+                            <span class="impact-icon">💼</span>
+                            <h4 class="impact-title">SDG 8: Decent Work &amp; Growth</h4>
+                            <p class="impact-desc">Promote inclusive and sustainable economic growth</p>
+                            <div class="impact-detail">
+                                We protect livelihoods of fishing communities, create new opportunities through sustainable practices, and ensure decent work conditions by reducing economic losses and supporting long-term industry viability.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JOIN SECTION -->
+        <div class="section-view" id="join">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">🤝 Join the Movement</h2>
+                    <p class="section-subtitle">
+                        Instead of blaming fishermen, we empower them with tools to protect the ocean while protecting their livelihood
+                    </p>
+                </div>
+
+                <div style="text-align: center; margin: 60px auto;">
+                    <h3 style="font-size: 32px; color: var(--bright-cyan); margin-bottom: 40px;">
+                        Who Can Join?
+                    </h3>
+
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🎣</span>
+                            <h3 class="benefit-title">Fishermen</h3>
+                            <p class="benefit-text">
+                                Get free access to the platform. Track your nets, find safe zones, fish sustainably, and protect your future income.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🌿</span>
+                            <h3 class="benefit-title">NGOs &amp; Conservation Groups</h3>
+                            <p class="benefit-text">
+                                Access data for cleanup operations. Coordinate with communities. Track environmental impact and monitor progress.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🏛️</span>
+                            <h3 class="benefit-title">Government &amp; Policy Makers</h3>
+                            <p class="benefit-text">
+                                Real-time insights for marine policy. Data-driven zone management. Monitor sustainability metrics and fishing patterns.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">💰</span>
+                            <h3 class="benefit-title">Investors &amp; Sponsors</h3>
+                            <p class="benefit-text">
+                                Support social impact with measurable outcomes. Fund ocean conservation while empowering coastal communities.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🔬</span>
+                            <h3 class="benefit-title">Researchers &amp; Scientists</h3>
+                            <p class="benefit-text">
+                                Access community-generated data on fishing patterns, marine health, and conservation effectiveness.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🏢</span>
+                            <h3 class="benefit-title">Corporate Partners</h3>
+                            <p class="benefit-text">
+                                ESG initiatives with real impact. Supply chain sustainability. Support responsible fishing communities.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="decorative-wave"></div>
+
+                    <div style="margin-top: 80px;">
+                        <h3 style="font-size: 28px; color: var(--seafoam); margin-bottom: 25px;">
+                            Ready to Make a Difference?
+                        </h3>
+                        <p style="font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 40px; line-height: 1.8;">
+                            Contact us to learn how you can be part of the SheAWave SeaGuard Collective. Together, we can protect our oceans and empower fishing communities.
+                        </p>
+                        <div class="cta-buttons">
+                            <button class="cta-btn primary">
+                                Get Started Today
+                            </button>
+                            <button class="cta-btn secondary">
+                                Contact Us
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Create animated ocean creatures (reduced for professional look)
+        const oceanBg = document.querySelector('.ocean-bg');
+
+        // Add bubbles (reduced from 35 to 15)
+        for(let i = 0; i < 15; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.width = (12 + Math.random() * 25) + 'px';
+            bubble.style.height = bubble.style.width;
+            bubble.style.animationDelay = Math.random() * 15 + 's';
+            bubble.style.animationDuration = (10 + Math.random() * 12) + 's';
+            oceanBg.appendChild(bubble);
+        }
+
+        // Add swimming fish (reduced from 20 to 8)
+        const fishTypes = ['🐟', '🐠', '🐡'];
+        for(let i = 0; i < 8; i++) {
+            const fish = document.createElement('div');
+            fish.className = 'fish';
+            
+            const rand = Math.random();
+            if(rand > 0.7) {
+                fish.classList.add('large');
+            } else if(rand > 0.4) {
+                fish.classList.add('small');
+            }
+            
+            fish.textContent = fishTypes[Math.floor(Math.random() * fishTypes.length)];
+            fish.style.top = (5 + Math.random() * 85) + '%';
+            fish.style.animationDelay = Math.random() * 25 + 's';
+            fish.style.animationDuration = (18 + Math.random() * 20) + 's';
+            oceanBg.appendChild(fish);
+        }
+
+        // Add jellyfish (reduced from 8 to 3)
+        const jellyfishTypes = ['🪼'];
+        for(let i = 0; i < 3; i++) {
+            const jellyfish = document.createElement('div');
+            jellyfish.className = 'jellyfish';
+            jellyfish.textContent = jellyfishTypes[Math.floor(Math.random() * jellyfishTypes.length)];
+            jellyfish.style.left = (10 + Math.random() * 80) + '%';
+            jellyfish.style.top = (10 + Math.random() * 60) + '%';
+            jellyfish.style.animationDelay = Math.random() * 20 + 's';
+            jellyfish.style.animationDuration = (15 + Math.random() * 10) + 's';
+            oceanBg.appendChild(jellyfish);
+        }
+
+        // Add seaweed at the bottom (reduced from 15 to 8)
+        for(let i = 0; i < 8; i++) {
+            const seaweed = document.createElement('div');
+            seaweed.className = 'seaweed';
+            seaweed.style.left = (Math.random() * 100) + '%';
+            seaweed.style.height = (120 + Math.random() * 120) + 'px';
+            seaweed.style.width = (25 + Math.random() * 20) + 'px';
+            seaweed.style.animationDelay = Math.random() * 5 + 's';
+            seaweed.style.animationDuration = (4 + Math.random() * 4) + 's';
+            oceanBg.appendChild(seaweed);
+        }
+
+        // Section navigation with active button tracking
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section-view').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update nav button states
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Find and activate the corresponding nav button
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                if(btn.textContent.toLowerCase().includes(sectionId) || 
+                   (sectionId === 'home' && btn.textContent === 'Home') ||
+                   (sectionId === 'problem' && btn.textContent === 'Our Problem') ||
+                   (sectionId === 'solution' && btn.textContent === 'Our Solution') ||
+                   (sectionId === 'impact' && btn.textContent === 'Our Impact') ||
+                   (sectionId === 'sdg' && btn.textContent === 'SDG Goals') ||
+                   (sectionId === 'join' && btn.textContent === 'Join Us')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Show/hide back button
+            const backBtn = document.getElementById('backBtn');
+            if (sectionId === 'home') {
+                backBtn.classList.remove('visible');
+            } else {
+                backBtn.classList.add('visible');
+            }
+        }
+
+        // Solution tab switching
+        function showSolutionTab(tabId) {
+            // Hide all solution content
+            document.querySelectorAll('.solution-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show selected content
+            document.getElementById(tabId).classList.add('active');
+
+            // Update tab button states
+            document.querySelectorAll('.solution-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Activate clicked tab
+            event.target.classList.add('active');
+
+            // Scroll to top of solution section
+            document.getElementById('solution').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Add hover effects to all interactive buttons
+        document.querySelectorAll('button, .quick-nav-card, .impact-card, .benefit-card, .feature-card, .stat-card, .sdg-card').forEach(elem => {
+            elem.addEventListener('mouseenter', function() {
+                if(this.tagName === 'BUTTON') {
+                    this.style.transform = 'translateY(-3px)';
+                }
+            });
+            elem.addEventListener('mouseleave', function() {
+                if(this.tagName === 'BUTTON') {
+                    this.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Set initial active state
+        document.querySelector('.nav-btn').classList.add('active');
+    </script>
+
+</body></html>
